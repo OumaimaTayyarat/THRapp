@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cookieParser());
 
 const corsOptions = {
     origin: ["https://thr-app.vercel.app"], // Spécifie l'origine de ton frontend
