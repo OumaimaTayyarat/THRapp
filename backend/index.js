@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:process.env.LOCALHOST,
+    origin:"https://thr-app.vercel.app/",
    
     credentials:true
 }
