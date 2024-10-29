@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: "https://thr-app.vercel.app", // Spécifie l'origine de ton frontend
+    origin: ["https://thr-app.vercel.app"], // Spécifie l'origine de ton frontend
     credentials: true, // Permet l'envoi de cookies et des en-têtes d'authentification
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
