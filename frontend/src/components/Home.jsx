@@ -5,7 +5,7 @@ import Footer from './shared/Footer';
 import useGetAllJobs from '@/hooks/useGetAllJobs';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Hello from './shared/hello.jsx';
+import Hello from './shared/Hello.jsx';
 import GlobeComponent from './shared/GlobeComponent.jsx';
 import Teams from './shared/teams.jsx';
 
