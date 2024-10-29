@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar1 from './shared/Navbar1.jsx';
-import HeroSection from './HeroSection';
 import CategoryCarousel from './CategoryCarousel';
-import LatestJobs from './LatestJobs';
 import Footer from './shared/Footer';
 import useGetAllJobs from '@/hooks/useGetAllJobs';
 import { useSelector } from 'react-redux';
@@ -10,8 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Hello from './shared/hello.jsx';
 import GlobeComponent from './shared/GlobeComponent.jsx';
 import Teams from './shared/teams.jsx';
-import LoupeSection from './shared/LoupeSection.jsx';
-import Exemples from './shared/Exemples.jsx';
+
 import Examples from './shared/Examples.jsx';
 import ContactUs from './shared/ContactUs.jsx';
 import "./Home.css"
