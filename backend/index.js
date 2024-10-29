@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin: process.env.LOCALHOST,   // Ou remplacer par une liste d'origines autorisées
+    origin: "https://thr-app.vercel.app",   // Ou remplacer par une liste d'origines autorisées
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]  // Méthodes autorisées
 };
