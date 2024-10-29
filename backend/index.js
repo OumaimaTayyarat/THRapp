@@ -21,8 +21,8 @@ app.use(cookieParser());
 const corsOptions = {
     origin: (origin, callback) => {
         const allowedOrigins = [
-            "https://thr-app.vercel.app",
-            "http://localhost:3000"
+            "http://thr-app.vercel.app",
+
         ];
         
         if (allowedOrigins.includes(origin) || !origin) {
