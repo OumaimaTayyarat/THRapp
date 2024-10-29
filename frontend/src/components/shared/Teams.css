@@ -1,0 +1,102 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 1.7;
+	color: #c4c3ca;
+	background-color: #1f2029;
+	/* background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg'); */
+    background-attachment: fixed; /* Fait que le fond reste fixe */
+    background-position: center;
+	background-repeat: repeat;
+	background-size: 5%;
+
+	overflow-x: hidden;
+	-webkit-transition: all 300ms linear;
+	transition: all 300ms linear;
+}
+
+
+.container1{
+
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+.teamo {
+  position: relative; /* Ensure the positioning context is set */
+}
+.profile1{
+  max-width: 50%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #7f99b5;
+    text-align: center;
+  }
+  
+  span{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #edb526;
+    text-align: center;
+
+  }
+  .profile1:hover {
+    transform: translateY(25px);
+  }
+  
+  .profile1 img {
+    max-width: 50%;
+    border-radius: 50%;
+    border: 5px solid #7f99b5;
+    filter: drop-shadow(-20px 0 10px rgba(0, 0, 0, 0.1));
+    cursor: pointer;
+  }
+
+  /* .profile1:not(:first-child) img {
+    margin-left: -20px;
+  }
+   */
+  .profile1 .name {
+    position: absolute;
+    background-color: #7f99b5;
+    color: #fff;
+    font-family:  'Montserrat', sans-serif;
+    padding: 15px 30px;
+    border-radius: 100px;
+    bottom: -80px; left: 50%;
+    white-space: nowrap;
+    transform: translate(-50%, -50px);
+    letter-spacing: 1px;
+    font-size: 20px;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  
+  .profile1 .name::before {
+    content: "";
+    position: absolute;
+    width: 15px; height: 15px;
+    background-color: #7f99b5;
+    top: 0; left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .profile1 img:hover + .name {
+    opacity: 1;
+    transform: translateX(-50%);
+    box-shadow: 0 10px 20px rgba(86, 86, 198, 0.3);
+  }

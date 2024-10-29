@@ -1,0 +1,12 @@
+.select-trigger {
+    padding: 0.5rem 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.select-item {
+    padding: 0.5rem 1rem !important;
+    font-weight: 300 !important;
+    color: #7f99b5 !important;
+}
