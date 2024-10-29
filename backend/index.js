@@ -18,9 +18,10 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
     origin:process.env.LOCALHOST,
+   
     credentials:true
 }
-
+console.log(process.env.LOCALHOST)
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 3000;
