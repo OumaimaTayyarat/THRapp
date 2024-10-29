@@ -57,6 +57,7 @@ const Signup = () => {
              
                 
             });
+            console.log(`${USER_API_END_POINT}/register`)
             if (res.data.success) {
                 navigate("/login");
                 toast.success(res.data.message);
