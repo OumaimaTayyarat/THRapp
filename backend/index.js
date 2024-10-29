@@ -8,22 +8,23 @@ import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 
-dotenv.config({});
+dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // middleware
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 const corsOptions = {
     origin: (origin, callback) => {
         const allowedOrigins = [
             "https://thr-app.vercel.app",
-            "http://localhost:3000" // Ajoute d'autres origines si nécessaire
+            "http://localhost:3000"
         ];
         
-        // Vérifie si l'origine de la requête est autorisée
         if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true);
         } else {
@@ -38,14 +39,25 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// api's
+// Log des requêtes
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
+// API routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
+// Gestion des erreurs
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     connectDB();
     console.log(`Server running at port ${PORT}`);
-})
+});
