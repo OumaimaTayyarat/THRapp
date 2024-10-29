@@ -17,10 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:process.env.LOCALHOST,
-   
-    credentials:true
-}
+    origin: process.env.LOCALHOST,   // Ou remplacer par une liste d'origines autorisées
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]  // Méthodes autorisées
+};
+
 console.log(process.env.LOCALHOST)
 app.use(cors(corsOptions));
 
