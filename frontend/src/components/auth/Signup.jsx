@@ -47,7 +47,8 @@ const Signup = () => {
             formData.append("file", input.file);
   
         }
-       console.log(formData)
+                  console.log(`${USER_API_END_POINT}/register`)
+
         try {
             dispatch(setLoading(true));
             const res = await axios.post(`${USER_API_END_POINT}/register`, formData, {
@@ -57,7 +58,6 @@ const Signup = () => {
              
                 
             });
-            console.log(`${USER_API_END_POINT}/register`)
             if (res.data.success) {
                 navigate("/login");
                 toast.success(res.data.message);
