@@ -19,24 +19,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: (origin, callback) => {
-        const allowedOrigins = [
-            "http://thr-app.vercel.app",
-
-        ];
-        
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
+    origin: '*', // À utiliser seulement pour le développement
     credentials: true,
-    methods: ["get", "post", "put", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     optionsSuccessStatus: 200
 };
-
 app.use(cors(corsOptions));
 
 // Log des requêtes
