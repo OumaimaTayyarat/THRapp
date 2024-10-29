@@ -17,16 +17,26 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin: "https://thr-app.vercel.app",   // Ou remplacer par une liste d'origines autorisées
+    origin: (origin, callback) => {
+        const allowedOrigins = [
+            "https://thr-app.vercel.app",
+            "http://localhost:3000" // Ajoute d'autres origines si nécessaire
+        ];
+        
+        // Vérifie si l'origine de la requête est autorisée
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]  // Méthodes autorisées
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    optionsSuccessStatus: 200
 };
 
-console.log(process.env.LOCALHOST)
 app.use(cors(corsOptions));
-
-const PORT = process.env.PORT || 3000;
-
 
 // api's
 app.use("/api/v1/user", userRoute);
