@@ -46,8 +46,7 @@ export const register = async (req, res) => {
         console.log(error);
     }
 }
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt"; // Assurez-vous d'importer bcrypt si ce n'est pas déjà fait
+
 
 export const login = async (req, res) => {
     try {
