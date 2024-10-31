@@ -11,14 +11,14 @@ import "./Home.css"
 // const randomJobs = [1, 2,45];
 
 const Browse = () => {
-    useGetAllJobs();
-    const { allJobs } = useSelector(store => store.job);
     const dispatch = useDispatch();
+    useGetAllJobs()
+    const { allJobs } = useSelector(store => store.job);
+
     useEffect(() => {
-        return () => {
-            dispatch(setSearchedQuery(""));
-        }
-    }, [])
+        // Réinitialiser `searchedQuery` au montage de `Browse`
+        dispatch(setSearchedQuery(""));
+    }, [dispatch]);
     return (
         <div className='body'>
             <br />
