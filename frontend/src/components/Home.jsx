@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Hello from './shared/Hello.jsx';
 import GlobeComponent from './shared/GlobeComponent.jsx';
 import Teams from './shared/Teams.jsx';
+import Exemples from './shared/Exemples.jsx';
 
 import Examples from './shared/Examples.jsx';
 import ContactUs from './shared/ContactUs.jsx';
