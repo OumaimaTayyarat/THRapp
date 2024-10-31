@@ -4,7 +4,6 @@ import video1 from '../../assets/6466246-uhd_4096_2160_25fps.mp4';
 import video2 from '../../assets/12529965_3840_2160_24fps.mp4';
 import video3 from '../../assets/5146942-uhd_4096_2160_25fps.mp4';
 
-
 function Examples() {
   useEffect(() => {
     const script = document.createElement('script');
@@ -21,12 +20,6 @@ function Examples() {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-        },
-        mousewheel: {
-          invert: false,
-          forceToAxis: false,
-          thresholdDelta: 50,
-          sensitivity: 1,
         },
         on: {
           slideChange: function () {
@@ -60,8 +53,7 @@ function Examples() {
           <div className="swiper-slide">
             <div className="content" data-content="one">
               <h1>Hotels</h1>
-              <p>Explore our job openings in the hospitality sector and join a dynamic and innovative industry!
-              </p>
+              <p>Explore our job openings in the hospitality sector and join a dynamic and innovative industry!</p>
             </div>
             <div className="background video" data-item="one">
               <video src={video1} autoPlay loop muted playsInline></video>
