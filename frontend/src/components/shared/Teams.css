@@ -66,6 +66,15 @@ body {
     filter: drop-shadow(-20px 0 10px rgba(0, 0, 0, 0.1));
     cursor: pointer;
   }
+ span{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #edb526;
+    text-align: center;
+    cursor: pointer;
+
+  }
 
   /* .profile1:not(:first-child) img {
     margin-left: -20px;
