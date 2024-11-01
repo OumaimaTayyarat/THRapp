@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import "./Examples.css";
 import video1 from '../../assets/6466246-uhd_4096_2160_25fps.mp4';
 import video2 from '../../assets/12529965_3840_2160_24fps.mp4';
-import video3 from '../../assets/5146942-uhd_4096_2160_25fps.mp4';
+import video3 from '../../assets/5146942-uhd_4096_2160_25fps (2).mp4';
 
 function Examples() {
   useEffect(() => {
