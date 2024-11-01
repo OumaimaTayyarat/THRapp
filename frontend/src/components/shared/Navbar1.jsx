@@ -128,11 +128,11 @@ const Navbar1 = () => {
             <header className="cd-header">
                 <div className="header-wrapper">
                     <div className="logo-wrap">
-                        <a href="#" className="hover-target">   <img
+                <a  className="hover-target"><Link to="/" className="hover-target">   <img
                             src={logoImage}
                             alt="Your Logo"
                             style={{ width: '160px', height: 'auto' }} // Adjust styles as needed
-                        /> </a>
+                        /></Link> </a>
 
                         <div id="switch" className="hover-target">
                             <div id="circle"> </div>
