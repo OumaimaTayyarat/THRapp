@@ -120,7 +120,7 @@ body {
     transform: translateX(-50%);
     box-shadow: 0 10px 20px rgba(86, 86, 198, 0.3);
   } */
-.titles {
+.titless {
     font-family: Montserrat, sans-serif;
     font-size: 40px;
     font-weight: 700;
@@ -145,7 +145,7 @@ body {
       font-size: 7px !important;
   
   }
-    .titles{
+    .titless{
       margin-top: 0rem !important;
      font-size: 20px !important;
   
