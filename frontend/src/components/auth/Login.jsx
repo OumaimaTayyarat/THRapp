@@ -156,8 +156,8 @@ const Login = () => {
     margin-bottom: 7rem !important;
 }
     .small-checkbox {
-            width: 10px;
-            height: 10px;
+            width: 10px !important;
+            height: 10px !important;
           }
 
          
