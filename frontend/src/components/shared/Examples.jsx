@@ -16,7 +16,7 @@ function Examples() {
       
       // Initialize Swiper
       const swiper = new window.Swiper('.swiper-container', {
-        direction: 'vertical',
+        direction: 'horizontal',
         effect: 'fade',
         speed: 1000,
         loop: true,
