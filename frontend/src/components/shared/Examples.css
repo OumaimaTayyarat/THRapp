@@ -271,6 +271,12 @@ body {
 
   }
   .background video{
-    height: 90% !important;
+    height: 100% !important;
   }
+.swiper-container {
+
+  height: 80vh !important;
+
+}
+
 }
