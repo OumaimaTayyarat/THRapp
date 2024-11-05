@@ -21,8 +21,7 @@ function Examples() {
         speed: 1000,
         loop: true,
         allowTouchMove: isMobile, // Disable touch movement
-        touchRatio: 0, // Disable touch sensitivity
-        simulateTouch: false, // Disable touch simulation
+
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
