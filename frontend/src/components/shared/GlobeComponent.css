@@ -58,3 +58,8 @@
     color: rgba(249, 241, 233, 0.7); /* Couleur du placeholder */
     opacity: 1; /* S'assurer que le placeholder est visible */
   }
+  @media (max-width: 660px) {
+    #demo-canvas {
+      height: 70% !important;
+      display: block;
+  }
