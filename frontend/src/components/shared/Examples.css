@@ -16,7 +16,7 @@ body {
   position: relative; /* Ensure positioning for the pseudo-element */
   width: 100%;
   height: 100vh;
-  overflow: auto;
+  overflow: hidden;
   padding: 0 !important;
   margin: 0 !important;
 }
