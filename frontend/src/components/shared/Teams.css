@@ -120,6 +120,12 @@ body {
     transform: translateX(-50%);
     box-shadow: 0 10px 20px rgba(86, 86, 198, 0.3);
   } */
+.titles {
+    font-family: Montserrat, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #7f99b5;
+    text-align: center;
   @media screen and (max-width:580px){
     .team{
       padding-bottom: 5%;
@@ -138,7 +144,12 @@ body {
       letter-spacing: 1px; */
       font-size: 7px !important;
   
-
+  }
+    .titles{
+      margin-top: 0rem !important;
+     font-size: 20px !important;
+  
+    }
    
     }
     .details{
