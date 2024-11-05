@@ -60,6 +60,6 @@
   }
   @media (max-width: 660px) {
     #demo-canvas {
-      height: 70% !important;
+      height: 80vh !important;
       display: block;
-  }
+  }}
