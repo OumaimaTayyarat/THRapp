@@ -6,11 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { setSearchedQuery } from '@/redux/jobSlice';
 
 const category = [
-    "Front-Office",
-    "Middle-Office",
-    "Support-Office",
-    "Specialty-Offices",
-    "Back-Office"
+   "Top management",
+    "Middle management",
+    "Frontline management"
 ];
 
 const CategoryCarousel = () => {
