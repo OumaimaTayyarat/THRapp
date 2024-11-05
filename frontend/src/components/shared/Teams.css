@@ -33,10 +33,12 @@ body {
 }
 .profile1{
 
-  width: 26%;
+  width: 28%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* Pour empiler l'image et le texte */
+  align-items: center; /* Centre l'image et le texte horizontalement */
+  justify-content: center; /* Centre verticalement dans chaque profil */
+  text-align: center;
 }
 .title {
     font-family: 'Montserrat', sans-serif;
@@ -55,16 +57,16 @@ body {
     cursor: pointer;
 
   }
-  .profile1:hover {
+  /* .profile1:hover {
     transform: translateY(25px);
-  }
+  } */
   
   .profile1 img {
-    max-width: 50%;
+    max-width: 60%;
     border-radius: 50%;
     border: 2px solid #7f99b5;
     filter: drop-shadow(-20px 0 10px rgba(0, 0, 0, 0.1));
-    cursor: pointer;
+  
   }
  span{
     font-family: 'Montserrat', sans-serif;
@@ -81,19 +83,27 @@ body {
   } */
   
   .profile1 .name {
-    position: absolute;
+    position: relative;
     background-color: #7f99b5;
     color: #fff;
     font-family:  'Montserrat', sans-serif;
     padding: 15px 30px;
     border-radius: 100px;
-    bottom: -80px; left: 50%;
+    bottom: -50%;
+    left: 0%;
     white-space: nowrap;
-    /* transform: translate(-50%, -50px); */
+
     letter-spacing: 1px;
-    font-size: 20px;
-    opacity: 0;
-    transition: all 0.3s;
+    font-size: 18px;
+    opacity: 1;
+
+    box-shadow: 0 5px 10px rgba(86, 86, 198, 0.3);
+ 
+  }
+  .details{
+    font-size: 13px;
+    font-weight: 200;
+
   }
   
   /* .profile1 .name::before {
@@ -105,8 +115,37 @@ body {
     transform: translate(-50%, -50%) rotate(45deg);
   } */
   
-  .profile1 img:hover + .name {
+  /* .profile1 img:hover + .name {
     opacity: 1;
     transform: translateX(-50%);
     box-shadow: 0 10px 20px rgba(86, 86, 198, 0.3);
+  } */
+  @media screen and (max-width:580px){
+    .team{
+      padding-bottom: 5%;
+    }
+    .profile1 .name {
+      position: relative;
+      background-color: #7f99b5;
+      color: #fff;
+      font-family:  'Montserrat', sans-serif;
+      padding: 10px 10px;
+      border-radius: 100px;
+      bottom: -50%;
+      left: 0%;
+      white-space: nowrap;
+/*   
+      letter-spacing: 1px; */
+      font-size: 7px !important;
+  
+
+   
+    }
+    .details{
+      font-size: 5px;
+      font-weight: 200;
+  
+    }
   }
+
+  

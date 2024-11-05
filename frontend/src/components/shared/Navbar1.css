@@ -81,14 +81,14 @@ a:hover {
 	box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
 }
 
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
 
 	.cursor,
 	.cursor2,
 	.cursor3 {
 		display: none
 	}
-}
+} */
 
 /* #Primary style
 ================================================== */
@@ -116,13 +116,19 @@ a:hover {
 	top: 0;
 	left: 0;
 	z-index: 100;
+	margin-left: 2%;
+	margin-right: 2%;
+
+
+
 }
 
 .header-wrapper {
 	position: relative;
-	width: calc(100% - 100px);
-	margin-left: 50px;
+	/* width: calc(100% - 100px); */
+	margin-right: 4%;
 }
+
 
 .popover__content {
 	position: absolute;
@@ -235,7 +241,7 @@ a:hover {
 .nav:after {
 	content: "";
 	position: fixed;
-	top: 20px;
+	top: 50px;
 	left: 50px;
 	width: 0;
 	height: 0;
@@ -264,8 +270,7 @@ a:hover {
 .nav__content {
 	position: fixed;
 	visibility: hidden;
-	top: 90px;
-	left: 50px;
+    top: 65px;	left: 50px;
 	width: 150px;
 	text-align: left;
 }
@@ -386,7 +391,7 @@ body.nav-active .nav {
 body.nav-active .nav:before,
 body.nav-active .nav:after {
 	width: 160px;
-	height: 250px;
+	height: 200px;
 	border-radius: 15px;
 }
 
@@ -490,10 +495,158 @@ body.nav-active .nav__list-item:nth-child(10) {
 	transition: all 300ms linear;
 }
 
+#THRLogo {
+	width: 160px;
+	height: 'auto'
+}
+
 @media screen and (max-width: 580px) {
 	.switch-wrap h1 {
 		font-size: 32px;
 	}
+
+	#THRLogo {
+		width: 100px;
+		height: 'auto'
+	}
+
+	.lD {
+
+		font-size: 6px !important;
+		font-size: 300 !important;
+		font-family: 'Montserrat', sans-serif;
+	}
+
+	.menu-icon {
+		height: 30px;
+		width: 30px;
+
+	}
+
+	.menu-icon__line {
+		height: 2px;
+		width: 30px;
+
+	}
+
+	.menu-icon__line-left {
+		width: 13.5px;
+
+	}
+
+	.menu-icon__line-right {
+		width: 13.5px;
+
+	}
+
+	.menu-icon:hover .menu-icon__line-left,
+	.menu-icon:hover .menu-icon__line-right {
+		width: 30px;
+	}
+
+	.nav-but-wrap {
+
+
+		padding-left: 15px;
+		padding-top: 15px;
+		margin-top: 9px;
+
+	}
+
+	#switch {
+		width: 40px !important;
+		margin-left: 9px !important;
+
+	}
+
+	#circle {
+		position: absolute;
+		top: -8.5px !important;
+		left: -12.5px !important;
+		width: 16px !important;
+		height: 16px !important;
+
+	}
+
+
+
+	.switched #circle {
+		left: 25px !important;
+	}
+
+	body.nav-active .nav:before,
+	body.nav-active .nav:after {
+		width: 108px;
+		height: 200px;
+		border-radius: 15px;
+	}
+
+	.nav__list-item a {
+
+		padding-left: 15px;
+	
+	}
+
+	.nav__list-item a:after {
+	
+		width: 2px;
+	
+	}
+	.nav__content {
+	
+		top: 38px;
+		left: 50px;
+	
+	}
+	body.nav-active .menu-icon__line-left {
+		width: 15px;
+		-webkit-transform: translate(2px, 4px) rotate(45deg);
+		transform: translate(2px, 4px) rotate(45deg);
+	}
+	
+	body.nav-active .menu-icon__line-right {
+		width: 15px;
+		float: right;
+		-webkit-transform: translate(-3px, -3.5px) rotate(45deg);
+		transform: translate(-3px, -3.5px) rotate(45deg);
+	}
+	
+	body.nav-active .menu-icon:hover .menu-icon__line-left,
+	body.nav-active .menu-icon:hover .menu-icon__line-right {
+		width: 15px;
+	}
+
+	.title {
+
+
+		font-family: 'Montserrat', sans-serif;
+		font-size: 20px;
+		font-weight: 700;
+		color: #7f99b5;
+		text-align: center;
+	  }
+	  .spano{
+		font-family: 'Montserrat', sans-serif;
+		font-size: 20px;
+		font-weight: 700;
+		color: #edb526;
+		text-align: center;}
+	
+		.nav:before,
+		.nav:after {
+	
+			top: 20px !important;
+	
+		}
+	
+		.w-72 {
+			width: 14rem !important;
+		}
+	
+		
+
+
+	
 }
 
 .switch-wrap p {
@@ -584,7 +737,7 @@ body.nav-active .nav__list-item:nth-child(10) {
 
 body.light {
 	background-color: #fff;
-	background-image: 
+	background-image:
 		url('https://res.cloudinary.com/dpjvhznkd/image/upload/v1730144578/Capture_d_%C3%A9cran_2024-10-28_203834.svg._xs3kr4.png');
 	background-attachment: fixed;
 	/* Fait que le fond reste fixe */
@@ -623,12 +776,12 @@ body.light .menu-icon__line {
 }
 
 body.light .nav:before {
-	background-color: rgba(235, 235, 235, 0.4);
+	/* background-color: rgba(235, 235, 235, 0.4); */
 }
 
 body.light .nav:after {
 	/* background-color: rgb(246,239,249); */
-	box-shadow: 6px 6px 22px rgba(42, 31, 63, 0.1);
+	/* box-shadow: 6px 6px 22px rgba(42, 31, 63, 0.1); */
 }
 
 body.light .nav__list-item a {

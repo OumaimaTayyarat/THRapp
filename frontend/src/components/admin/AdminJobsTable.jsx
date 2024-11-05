@@ -43,7 +43,7 @@ const AdminJobsTable = () => {
     }, [allAdminJobs, searchJobByText]);
 
     return (
-        <div>
+        <div className='body'>
             <Table>
                 <TableCaption style={{ color: '#7f99b5' }}>A list of your recent posted jobs</TableCaption>
                 <TableHeader>

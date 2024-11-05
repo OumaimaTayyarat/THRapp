@@ -15,115 +15,152 @@ import Navbar1 from '../shared/Navbar1'
 import Footer from '../shared/Footer'
 
 const Login = () => {
-    const { loading } = useSelector(store => store.auth)
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const [input, setInput] = useState({
+  const { loading } = useSelector(store => store.auth)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [input, setInput] = useState({
 
-        email: "",
+    email: "",
 
-        password: "",
+    password: "",
 
-        role: ""
+    role: ""
 
-    })
-    const changeEventHandler = (e) => {
-        setInput({ ...input, [e.target.name]: e.target.value })
-    }
+  })
+  const changeEventHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value })
+  }
 
-    const submitHandler = async (e) => {
-        e.preventDefault();
+  const submitHandler = async (e) => {
+    e.preventDefault();
 
 
-        try {
-            dispatch(setLoading(true))
-            const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
-                headers: {
-                    "Content-Type": "application/json"
+    try {
+      dispatch(setLoading(true))
+      const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+        headers: {
+          "Content-Type": "application/json"
 
-                },
-                withCredentials: true,
+        },
+        withCredentials: true,
 
-            })
-            if (res.data.success) {
-                dispatch(setUser(res.data.user))
-                navigate("/")
-                toast.success(res.data.message)
-            }
-        } catch (error) {
-            console.log(error)
-            toast.error(error.response.data.message)
+      })
+      if (res.data.success) {
+        dispatch(setUser(res.data.user))
+        navigate("/")
+        toast.success(res.data.message)
+      }
+    } catch (error) {
+      console.log(error)
+      toast.error(error.response.data.message)
 
-        } finally {
-            dispatch(setLoading(false))
-
-        }
+    } finally {
+      dispatch(setLoading(false))
 
     }
-    return (
-        <div>
-            <Navbar1 />
-            <br />
-            <br />
-            <br />
-            <br />
 
-            <div className='flex items-center justify-center max-w-7xl mx-auto'>
-  <form onSubmit={submitHandler} className='w-1/2 border border-gray-200 rounded-md p-4 my-10'>
-    <h1 className='font-bold text-xl mb-5' style={{ color: '#7f99b5' }}>Sign up</h1>
+  }
+  return (
+    <div>
+      <Navbar1 />
+      <br />
+      <br />
+      <br />
+      <br />
 
-    <div className='my-2'>
-      <Label style={{ color: '#7f99b5' }}>Email</Label>
-      <Input type="email" value={input.email} name="email" onChange={changeEventHandler} placeholder="expl@gmail.com" />
-    </div>
+      <div className='flex items-center justify-center max-w-7xl mx-auto px-2'>
+        <form onSubmit={submitHandler} className='w-full sm:w-3/4 md:w-1/2 lg:w-1/3 border border-gray-200 rounded-md p-4 my-10'>
+          <h1 className='font-bold text-lg sm:text-xl mb-5' style={{ color: '#7f99b5' }}>Login</h1>
 
-    <div className='my-2'>
-      <Label style={{ color: '#7f99b5' }}>Password</Label>
-      <Input type="password" value={input.password} name="password" onChange={changeEventHandler} placeholder="" />
-    </div>
-    
-    <div className='flex items-center justify-between'>
-      <RadioGroup className="flex items-center gap-4 my-5">
-        <div className="flex items-center space-x-2">
-          <Input
-            type="radio"
-            name="role"
-            value="student"
-            checked={input.role == "student"}
-            onChange={changeEventHandler}
-            className="cursor-pointer" />
-          <Label htmlFor="r1" style={{ color: '#7f99b5' }}>Candidate</Label>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Input
-            type="radio"
-            name="role"
-            checked={input.role == "recruiter"}
-            onChange={changeEventHandler}
-            value="recruiter"
-            className="cursor-pointer" />
-          <Label htmlFor="r2" style={{ color: '#7f99b5' }}>Recruiter</Label>
-        </div>
-      </RadioGroup>
-    </div>
+          <div className='my-2'>
+            <Label style={{ color: '#7f99b5' }}>Email</Label>
+            <Input
+              type="email"
+              value={input.email}
+              name="email"
+              onChange={changeEventHandler}
+              placeholder="expl@gmail.com"
+              className="w-full" // Occupies full width
+            />
+          </div>
 
-    {
-      loading ? (
-        <Button className='w-full my-4'>
-          <Loader2 className='mr-2 h-4 w-4 animate-spin' />Please wait
-        </Button>
-      ) : (
-        <Button type="submit" className="w-full my-4 border-[#edb526] text-[#edb526] hover:bg-[#edb526] hover:text-white">Login</Button>
-      )
+          <div className='my-2'>
+            <Label style={{ color: '#7f99b5' }}>Password</Label>
+            <Input
+              type="password"
+              value={input.password}
+              name="password"
+              onChange={changeEventHandler}
+              placeholder="********"
+              className="w-full" // Occupies full width
+            />
+          </div>
+
+          <div className='flex items-center justify-between'>
+            <RadioGroup className="flex items-center gap-4 my-5">
+              <div className="flex items-center space-x-2">
+                <Input
+                  type="radio"
+                  name="role"
+                  value="student"
+                  checked={input.role === "student"}
+                  onChange={changeEventHandler}
+                  className="cursor-pointer"
+                />
+                <Label htmlFor="r1" style={{ color: '#7f99b5' }}>Candidate</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Input
+                  type="radio"
+                  name="role"
+                  value="recruiter"
+                  checked={input.role === "recruiter"}
+                  onChange={changeEventHandler}
+                  className="cursor-pointer"
+                />
+                <Label htmlFor="r2" style={{ color: '#7f99b5' }}>Recruiter</Label>
+              </div>
+            </RadioGroup>
+          </div>
+
+          {loading ? (
+            <Button className='w-full my-4'>
+              <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait
+            </Button>
+          ) : (
+            <Button type="submit" className="w-full my-4 border-[#edb526] text-[#edb526] hover:bg-[#edb526] hover:text-white">Login</Button>
+          )}
+
+          <p className='text-sm' style={{ color: '#7f99b5' }}>
+            Don't have an account? <Link to="/signup" className='text-blue-600'>Sign up</Link>
+          </p>
+        </form>
+      </div>
+
+      <style jsx>{`
+    @media (max-width: 660px) {
+  .form-container {
+    width: 90%; /* Formulaire prend presque toute la largeur */
+    padding: 1rem; /* Réduit le padding */
+  }
+
+  .input-field {
+    width: 100%; /* Champs prennent toute la largeur */
+  }
+
+  .button {
+    font-size: 0.875rem; /* Réduit la taille de la police du bouton */
+  }
+    form{
+    margin-top: 7rem !important;
+    margin-bottom: 7rem !important;
+}
     }
-
-    <p className='text-sm' style={{ color: '#7f99b5' }}> Don't have an account? <Link to="/signup" className='text-blue-600'>Sign up</Link></p>
-  </form>
-</div>
-
-            <Footer/>
-        </div>
-    )
+    }
+`}</style>
+      <Footer />
+    </div>
+  )
 }
 
 export default Login

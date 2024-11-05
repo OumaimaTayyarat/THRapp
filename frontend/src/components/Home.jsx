@@ -37,10 +37,15 @@ const Home = () => {
       <Navbar1  />
 
     <Examples/>
+    <br />
+ 
+ <br />
       {/* <Exemples/> */}
       <CategoryCarousel />
       {/* <LatestJobs /> */}
-
+      <br />
+ 
+ <br />
     
       <Hello/>  
      
@@ -60,6 +65,9 @@ const Home = () => {
       <br />
       <br />
       <ContactUs/>
+      <br />
+ 
+ <br />
       <Footer />
       </div>
 

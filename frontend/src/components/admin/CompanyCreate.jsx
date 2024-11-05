@@ -44,7 +44,7 @@ const CompanyCreate = () => {
         }
     }
     return (
-        <div>
+        <div className='body'>
             <Navbar1 />
 
             <br />
@@ -54,8 +54,7 @@ const CompanyCreate = () => {
 
             {/* Centered Phrase */}
             <div className="title">
-                Your Company Name <br />
-                <p className='text-gray-100 text-sm'>What would you like to give your company name? you can change this later.</p>
+            Register your company<br />   <span>on THR</span><br />
 
             </div>
 
@@ -72,6 +71,7 @@ const CompanyCreate = () => {
         placeholder="JobHunt, Microsoft etc."
         onChange={(e) => setCompanyName(e.target.value)}
     />
+
     <div className='flex items-center gap-2 my-10'>
         <Button variant="outline" onClick={() => navigate("/admin/companies")} style={{ color: '#7f99b5' }}>Cancel</Button>
         <Button onClick={registerNewCompany} className="border-[#edb526] text-[#edb526] hover:bg-[#edb526] hover:text-white">Continue</Button>

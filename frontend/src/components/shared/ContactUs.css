@@ -99,7 +99,7 @@
     display: inline-block;
     color: #7f99b5;
     height: 35px;
-    font-size: 20px;
+    font-size: 14px;
     margin: 10px 5px;
     padding: 0 0 0 10px;
     border-radius: 4px;
@@ -110,7 +110,7 @@
   input::placeholder,
   textarea::placeholder{
     color: #7f99b5;
-    font-size: 18px
+    font-size: 14px;
   }
   
   .c1, .c2 {
@@ -132,7 +132,7 @@
     color: white;
  
     font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 19px;
     font-weight: 700;
     border: none;
     border-radius: 10px;
@@ -152,4 +152,63 @@
 
     background: #edb526 !important;
 
+  }
+  @media screen and (max-width:580px){
+
+      .cont {
+        position: absolute;
+        width: 350px !important;
+        height: 450px !important;
+        margin: 60px auto !important ;
+        padding: 25px 20px !important;
+        top: -80% !important;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Montserrat', sans-serif;
+    }
+    .contact {
+      width: 100%;
+      height: 270px;
+      padding: 20px;
+      margin-bottom: 20px !important;
+      /* margin: 0 auto; */
+      margin-top: 20px !important;
+      text-align: center;
+ 
+/* Couleur mise à jour */
+  }
+  .c1, .c2 {
+    width: 45%;
+  }
+  
+  .c3, .c4 {
+    width: 94%;
+  }
+  
+  .c4 {
+    height: 65px;
+    padding: 5px 10px;
+  }
+  .c1,.c2,.c3 {
+
+    height: 30px;
+    font-size: 13px;
+    margin: 10px 5px;
+    padding: 0 0 0 10px;
+    border-radius: 4px;
+
+  }
+  input[type="submit"] {
+    width: 94%;
+    height: 35px;
+    color: white;
+ 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+  
+  }
+
+  
+  
   }

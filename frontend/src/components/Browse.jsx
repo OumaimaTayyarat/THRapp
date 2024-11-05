@@ -7,6 +7,7 @@ import useGetAllJobs from '@/hooks/useGetAllJobs';
 import Navbar1 from './shared/Navbar1';
 import Footer from './shared/Footer';
 import './Home.css';
+import { motion } from 'framer-motion';
 
 const Browse = () => {
     const dispatch = useDispatch();
@@ -36,29 +37,41 @@ const Browse = () => {
 
             {/* Centered Phrase */}
             <div className="title">
-                Search Results ({allJobs.length})<br />
+                All jobs ({allJobs.length})<br />
             </div>
 
             <br />
             <br />
-            <br />
-            <br />
+    
 
             <Navbar1 />
 
-            <div className='max-w-7xl mx-auto my-10'>
-                <h1 className='font-bold text-xl my-10'></h1>
-                
+            <div className="max-w-7xl mx-auto my-10 px-4">
+                <h1 className="font-bold text-xl my-10 text-[#7f99b5]"></h1>
+
                 {isLoading ? (
-                    <p>Loading jobs...</p>  // Indicateur de chargement
+                    <p className="text-center text-lg text-gray-500">Loading jobs...</p> // Loading indicator
                 ) : (
-                    <div className='grid grid-cols-3 gap-4'>
-                        {allJobs.map((job) => (
-                            <Job key={job._id} job={job} />
-                        ))}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {allJobs.length > 0 ? (
+                            allJobs.map((job) => (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    key={job._id}
+                                    className="w-full"
+                                >
+                                    <Job job={job} />
+                                </motion.div>
+                            ))
+                        ) : (
+                            <p className="text-center w-full text-lg text-gray-500">No jobs found</p>
+                        )}
                     </div>
                 )}
             </div>
+
 
             <Footer />
         </div>

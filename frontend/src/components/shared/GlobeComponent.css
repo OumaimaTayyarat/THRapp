@@ -12,6 +12,11 @@
     z-index: 1;
   }
 
+  #demo-canvas {
+    width: 100% !important;
+    height: 100%;
+    display: block;
+  }
   .main-title {
     position: absolute;
     margin: 0;

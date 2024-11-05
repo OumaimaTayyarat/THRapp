@@ -22,14 +22,12 @@ const JobDescription = () => {
 
     const applyJobHandler = async () => {
         try {
-
             const res = await axios.get(`${APPLICATION_API_END_POINT}/apply/${jobId}`, { withCredentials: true });
             if (res.data.success) {
-                setIsApplied(true); // Update the local state
+                setIsApplied(true);
                 const updatedSingleJob = { ...singleJob, applications: [...singleJob.applications, { applicant: user?._id }] }
-                dispatch(setSingleJob(updatedSingleJob)); // helps us to real time UI update
+                dispatch(setSingleJob(updatedSingleJob));
                 toast.success(res.data.message);
-
             }
         } catch (error) {
             console.log(error);
@@ -43,7 +41,7 @@ const JobDescription = () => {
                 const res = await axios.get(`${JOB_API_END_POINT}/get/${jobId}`, { withCredentials: true });
                 if (res.data.success) {
                     dispatch(setSingleJob(res.data.job));
-                    setIsApplied(res.data.job.applications.some(application => application.applicant === user?._id)) // Ensure the state is in sync with fetched data
+                    setIsApplied(res.data.job.applications.some(application => application.applicant === user?._id))
                 }
             } catch (error) {
                 console.log(error);
@@ -53,84 +51,82 @@ const JobDescription = () => {
     }, [jobId, dispatch, user?._id]);
 
     return (
-   
-<div className='body'>
-<br />
+        <div className='body'>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
 
-<br />
-<br />
-<br />
-<br />
+            <div className="title">
+                Offre <span>Details</span>
+            </div>
 
-{/* Centered Phrase */}
-<div className="title">
-   Offre <span>Details</span>
-</div>
+            <br />
+            <br />
 
-<br />
-<br />
+            <Navbar1 />
 
+            <div className='max-w-7xl mx-auto my-10 px-4'>
+                {/* Header Section */}
+                <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0'>
+                    <div className='w-full sm:w-auto'>
+                        <h1 className='font-bold text-xl mb-4 sm:mb-0'>{singleJob?.title}</h1>
+                        <div className='flex flex-wrap items-center gap-2 mt-4'>
+                            <Badge className='text-[#7f99b5] font-bold' variant="ghost">
+                                {singleJob?.position} Positions
+                            </Badge>
+                            <Badge className='text-[#edb526] font-bold' variant="ghost">
+                                {singleJob?.jobType}
+                            </Badge>
+                            <Badge className='text-white font-bold' variant="ghost">
+                                {singleJob?.salary} LPA
+                            </Badge>
+                        </div>
+                    </div>
+                    <Button
+                        onClick={isApplied ? null : applyJobHandler}
+                        disabled={isApplied}
+                        className={`w-full sm:w-auto rounded-lg ${isApplied ? 'bg-gray-600 cursor-not-allowed' : 'border-[#edb526] text-[#edb526] hover:bg-[#edb526] hover:text-white'}`}
+                    >
+                        {isApplied ? 'Already Applied' : 'Apply Now'}
+                    </Button>
+                </div>
 
-<Navbar1/>
-
-
-        <div className='max-w-7xl mx-auto my-10'>
-            <div className='flex items-center justify-between'>
-                <div>
-                    <h1 className='font-bold text-xl'>{singleJob?.title}</h1>
-                    <div className='flex items-center gap-2 mt-4'>
-                        <Badge className={'text-[#7f99b5] font-bold'} variant="ghost">
-                            {singleJob?.position} Positions
-                        </Badge>
-                        <Badge className={'text-[#edb526] font-bold'} variant="ghost">
-                            {singleJob?.jobType}
-                        </Badge>
-                        <Badge className={'text-white font-bold'} variant="ghost">
-                            {singleJob?.salary} LPA
-                        </Badge>
-
+                {/* Details Section */}
+                <div className='mt-8'>
+                    <h1 className='border-b-2 border-b-gray-300 font-medium py-4'>Job Description</h1>
+                    <div className='my-4 space-y-4'>
+                        <DetailItem label="Role" value={singleJob?.title} />
+                        <DetailItem label="Location" value={singleJob?.location} />
+                        <DetailItem label="Description" value={singleJob?.description} />
+                        <DetailItem label="Experience" value={`${singleJob?.experience} yrs`} />
+                        <DetailItem label="Salary" value={`${singleJob?.salary} LPA`} />
+                        <DetailItem label="Total Applicants" value={singleJob?.applications?.length} />
+                        <DetailItem label="Posted Date" value={singleJob?.createdAt?.split("T")[0]} />
                     </div>
                 </div>
-                <Button
-                    onClick={isApplied ? null : applyJobHandler}
-                    disabled={isApplied}
-                    className={`rounded-lg ${isApplied ? 'bg-gray-600 cursor-not-allowed' : 'border-[#edb526] text-[#edb526] hover:bg-[#edb526] hover:text-white'}`}>
-                    {isApplied ? 'Already Applied' : 'Apply Now'}
-                </Button>
             </div>
-            <h1 className='border-b-2 border-b-gray-300 font-medium py-4'>Job Description</h1>
-            <div className='my-4'>
-                <h1 className='font-bold my-1'>Role:
-                    <span className='pl-4 text-[#7f99b5] text-sm font-medium'>{singleJob?.title}</span>
-                </h1>
-                <br />
-                <h1 className='font-bold my-1'>Location:
-                    <span className='pl-4 text-[#7f99b5] text-sm font-medium'>{singleJob?.location}</span>
-                </h1>
-                <br />
-                <h1 className='font-bold my-1'>Description:
-                    <span className='pl-4 text-[#7f99b5] text-sm font-medium'>{singleJob?.description}</span>
-                </h1>
-                <br />
-                <h1 className='font-bold my-1'>Experience:
-                    <span className='pl-4 text-[#7f99b5] text-sm font-medium'>{singleJob?.experience} yrs</span>
-                </h1>
-                <br />
-                <h1 className='font-bold my-1'>Salary:
-                    <span className='pl-4 text-[#7f99b5] text-sm font-medium'>{singleJob?.salary} LPA</span>
-                </h1>
-                <br />
-                <h1 className='font-bold my-1'>Total Applicants:
-                    <span className='pl-4 text-[#7f99b5] text-sm font-medium'>{singleJob?.applications?.length}</span>
-                </h1>
-                <br />
-                <h1 className='font-bold my-1'>Posted Date:
-                    <span className='pl-4 text-[#7f99b5] text-sm font-medium'>{singleJob?.createdAt.split("T")[0]}</span>
-                </h1>
-                <br /></div>
-        </div>
+
+            <style jsx>{`
+                @media (max-width: 640px) {
+                    .title {
+                        font-size: 1.5rem;
+                        text-align: center;
+                        margin-bottom: 1rem;
+                    }
+                }
+            `}</style>
         </div>
     )
 }
 
-export default JobDescription
+// Composant réutilisable pour les éléments de détail
+const DetailItem = ({ label, value }) => (
+    <div className='flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-0'>
+        <h1 className='font-bold min-w-[120px]'>{label}:</h1>
+        <span className='text-[#7f99b5] text-sm font-medium pl-0 sm:pl-4'>{value}</span>
+    </div>
+)
+
+export default JobDescription;

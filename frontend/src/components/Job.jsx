@@ -63,43 +63,48 @@ const Job = ({ job }) => {
     };
 
     return (
-        <div className='p-5 rounded-md shadow-xl bg-transparent border border-gray-300'>
-        <div className='flex items-center justify-between'>
-            <p className='text-sm text-[#7f99b5]'>
-                {daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago`}
-            </p>
-        </div>
-        <div className='flex items-center gap-2 my-2'>
-            <Button className="p-6">
-                <Avatar>
-                    <AvatarImage src={job?.company?.logo} />
-                </Avatar>
-            </Button>
-            <div>
-                <h1 className='font-medium text-lg text-[#7f99b5]' style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{job?.company?.name}</h1>
-                <p className='text-sm text-[#7f99b5]'>{job?.location}</p>
-            </div>
-        </div>
+<div className='p-5 rounded-md shadow-xl bg-transparent border border-gray-300 w-full sm:w-11/12 md:w-10/12 lg:w-11/12  mx-auto'>
+    <div className='flex items-center justify-between'>
+        <p className='text-sm text-[#7f99b5]'>
+            {daysAgoFunction(job?.createdAt) === 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago`}
+        </p>
+    </div>
+    
+    <div className='flex items-center gap-4 my-2'>
+        <Button className="p-2 md:p-4 lg:p-6">
+            <Avatar>
+                <AvatarImage src={job?.company?.logo} />
+            </Avatar>
+        </Button>
         <div>
-            <h1 className='font-bold text-lg my-2 text-[#7f99b5]' style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{job?.title}</h1>
-            <p className='text-sm text-[#7f99b5]' style={{ overflow: 'hidden', whiteSpace: 'normal' }}>{job?.description}</p>
-        </div>
-        <div className='flex items-center gap-2 mt-4'>
-            <Badge className={'text-[#7f99b5] font-bold'} variant="ghost">{job?.position} Positions</Badge>
-            <Badge className={'text-[#edb526] font-bold'} variant="ghost">{job?.jobType}</Badge>
-            <Badge className={'text-[#7f99b5] font-bold'} variant="ghost">{job?.salary}k Dhs/mois</Badge>
-        </div>
-        <div className='flex items-center gap-4 mt-4'>
-            <Button onClick={() => navigate(`/description/${job?._id}`)} variant="outline" className='text-[#7f99b5]'>
-                Details
-            </Button>
-            <Button
-                onClick={toggleSaveJobHandler}
-                className={`rounded-lg ${isSaved ? 'bg-green-600 text-white' : 'bg-[#edb526] text-white'}`}>
-                {isSaved ? 'Saved' : 'Save for Later'}
-            </Button>
+            <h1 className='font-medium text-sm md:text-base lg:text-lg text-[#7f99b5] truncate'>{job?.company?.name}</h1>
+            <p className='text-xs md:text-sm lg:text-base text-[#7f99b5]'>{job?.location}</p>
         </div>
     </div>
+
+    <div>
+        <h1 className='font-bold text-base md:text-lg my-2 text-[#7f99b5] truncate'>{job?.title}</h1>
+        <p className='text-xs md:text-sm lg:text-base text-[#7f99b5] line-clamp-3 md:line-clamp-5'>{job?.description}</p>
+    </div>
+
+    <div className='flex flex-wrap items-center gap-2 mt-4'>
+        <Badge className='text-[#7f99b5] font-bold' variant="ghost">{job?.position} Positions</Badge>
+        <Badge className='text-[#edb526] font-bold' variant="ghost">{job?.jobType}</Badge>
+        <Badge className='text-[#7f99b5] font-bold' variant="ghost">{job?.salary}k Dhs/mois</Badge>
+    </div>
+
+    <div className='flex flex-wrap items-center gap-4 mt-4'>
+        <Button onClick={() => navigate(`/description/${job?._id}`)} variant="outline" className='text-[#7f99b5] w-full sm:w-auto'>
+            Details
+        </Button>
+        <Button
+            onClick={toggleSaveJobHandler}
+            className={`rounded-lg ${isSaved ? 'bg-green-600 text-white' : 'bg-[#edb526] text-white'} w-full sm:w-auto`}>
+            {isSaved ? 'Saved' : 'Save for Later'}
+        </Button>
+    </div>
+</div>
+
     
     );
 };

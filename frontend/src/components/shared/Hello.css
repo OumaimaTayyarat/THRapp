@@ -5,7 +5,7 @@
 
 .hello {
   text-align: center; /* Center the text in the parent container */
-  margin: 0 auto; /* Center the container itself if needed */
+  margin: 0 auto ; /* Center the container itself if needed */
   max-width: 70% !important;
 }
 
@@ -166,4 +166,29 @@
     font-weight: 700;
     text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
   }
+  @media screen and (max-width:580px){
+    .title {
+
+      margin-top: 7rem !important;
+      /* margin-right: 5rem !important; */
+      font-size: 20px !important;
+ 
+      }
+      .spano{
+      font-size: 20px !important;
+    
   
+  }
+  span{
+    font-size: 20px !important;
+  
+
+}
+.main-title {
+
+
+  font-size: 20px !important;
+
+  }
+
+}

@@ -20,7 +20,7 @@ const AdminJobs = () => {
     dispatch(setSearchJobByText(input));
   }, [input]);
   return (
-    <div>
+    <div className='body'>
        <Navbar1 />
       
       <br />
@@ -36,21 +36,28 @@ const AdminJobs = () => {
   <br />
   <br />
   <br />
-      <div className='max-w-6xl mx-auto my-10'>
-        <div className='flex items-center justify-between my-5'>
-          <Input
-            className="w-fit"
-            placeholder="Filter by name, role"
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <Button className="border-[#edb526] text-[#edb526] hover:bg-[#edb526] hover:text-white"  onClick={() => navigate("/admin/jobs/create")}>New Jobs</Button>
-        </div>
-        <AdminJobsTable />
-      </div>
+  <div className="max-w-6xl mx-auto my-10 px-4">
+  <div className="flex flex-col sm:flex-row items-center justify-between my-5 gap-4">
+    <Input
+      className="w-full sm:w-auto"
+      placeholder="Filter by name, role"
+      onChange={(e) => setInput(e.target.value)}
+    />
+    <Button
+      className="w-full sm:w-auto border-[#edb526] text-[#edb526] hover:bg-[#edb526] hover:text-white"
+      onClick={() => navigate("/admin/jobs/create")}
+    >
+      New Jobs
+    </Button>
+  </div>
+  <AdminJobsTable />
+</div>
+
       <br />
       <br />
       
       <Footer/>
+ 
     </div>
   )
 }
