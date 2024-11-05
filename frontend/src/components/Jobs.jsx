@@ -86,7 +86,7 @@ const Jobs = () => {
             <style jsx>{`
                 @media (max-width: 660px) {
                     #refine {
-                        margin-top: 20px !important;
+                        margin-top: 7rem !important;
                     }
                 }
             `}</style>
