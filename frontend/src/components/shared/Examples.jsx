@@ -15,7 +15,7 @@ function Examples() {
       console.log('Swiper script loaded');
       
       // Initialize Swiper
-      const swiper = new window.Swiper('.swiper-container', {
+      const swiper = new window.Swiper('.swiperr-container', {
         direction: 'vertical',
         effect: 'fade',
         speed: 1000,
