@@ -239,7 +239,7 @@ body {
   .content[data-content="three"] {
     top: unset;
     left: 2%;
-    bottom: 3%;
+    bottom: 6%;
     width: 80%;
   }
 
@@ -267,7 +267,10 @@ body {
     display: none;
   }
   .swiper-container {
-    width: 100%;
+    width: 100% ;
 
+  }
+  .background video{
+    height: 90% !imporatant;
   }
 }
