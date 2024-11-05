@@ -20,7 +20,7 @@ function Examples() {
         effect: 'fade',
         speed: 1000,
         loop: true,
-        allowTouchMove: true, // Disable touch movement
+        allowTouchMove: false, // Disable touch movement
 
         pagination: {
           el: '.swiper-pagination',
