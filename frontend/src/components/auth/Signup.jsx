@@ -157,7 +157,7 @@ const Signup = () => {
                                     value="student"
                                     checked={input.role === 'student'}
                                     onChange={changeEventHandler}
-                                    className="cursor-pointer"
+                                    className="cursor-pointer small-checkbox"
                                 />
                                 <Label htmlFor="r1" style={{ color: '#7f99b5' }}>Candidate</Label>
                             </div>
@@ -168,7 +168,7 @@ const Signup = () => {
                                     value="recruiter"
                                     checked={input.role === 'recruiter'}
                                     onChange={changeEventHandler}
-                                    className="cursor-pointer"
+                                    className="cursor-pointer small-checkbox"
                                 />
                                 <Label htmlFor="r2" style={{ color: '#7f99b5' }}>Recruiter</Label>
                             </div>
@@ -211,8 +211,12 @@ const Signup = () => {
     margin-top: 7rem !important;
     margin-bottom: 6rem !important;
 }
+   .small-checkbox {
+            width: 10px !important;
+            height: 10px !important;
+          }
     }
-    }
+    
 `}</style>
         </div>
     );
