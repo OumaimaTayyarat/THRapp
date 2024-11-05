@@ -52,7 +52,7 @@ const Teams = () => {
       <br />
       <br />
            <br />
-      <br />
+ 
       <div className="container1">
   
        
