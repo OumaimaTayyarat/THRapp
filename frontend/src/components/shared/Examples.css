@@ -239,7 +239,7 @@ body {
   .content[data-content="three"] {
     top: unset;
     left: 2%;
-    bottom: 6%;
+    bottom: 10%;
     width: 80%;
   }
 
