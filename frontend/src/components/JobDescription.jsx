@@ -80,7 +80,7 @@ const JobDescription = () => {
                                 {singleJob?.jobType}
                             </Badge>
                             <Badge className='text-white font-bold' variant="ghost">
-                                {singleJob?.salary} LPA
+                                {singleJob?.salary} k Dhs/mois
                             </Badge>
                         </div>
                     </div>
@@ -101,7 +101,7 @@ const JobDescription = () => {
                         <DetailItem label="Location" value={singleJob?.location} />
                         <DetailItem label="Description" value={singleJob?.description} />
                         <DetailItem label="Experience" value={`${singleJob?.experience} yrs`} />
-                        <DetailItem label="Salary" value={`${singleJob?.salary} LPA`} />
+                        <DetailItem label="Salary" value={`${singleJob?.salary} k Dhs/mois`} />
                         <DetailItem label="Total Applicants" value={singleJob?.applications?.length} />
                         <DetailItem label="Posted Date" value={singleJob?.createdAt?.split("T")[0]} />
                     </div>
