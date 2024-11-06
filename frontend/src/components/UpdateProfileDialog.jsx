@@ -60,7 +60,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
             const res = await axios.post(`${USER_API_END_POINT}/profile/update`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                     'Authorization': `Bearer ${token}` // Inclure le jeton ici
+                    
 
                 },
                 withCredentials: true
