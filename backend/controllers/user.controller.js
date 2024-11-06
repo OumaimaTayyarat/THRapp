@@ -99,7 +99,8 @@ export const login = async (req, res) => {
                 httpOnly: true,
                 secure: true, // Assurez-vous que votre backend est en HTTPS
                 sameSite: "None", // Permet le partage entre Vercel et Render
-                maxAge: 1 * 24 * 60 * 60 * 1000 // 1 jour
+                maxAge: 1 * 24 * 60 * 60 * 1000, // 1 jour
+                path: '/',
             })
             .json({
                 message: `Welcome back ${user.fullname}`,
