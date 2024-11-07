@@ -45,12 +45,17 @@ const Login = () => {
         withCredentials: true,
 
       })
-      if (res.data.success) {
-        localStorage.setItem('token', res.data.token); // Stocker le token dans localStorage
-        console.log(localStorage)
-        dispatch(setUser(res.data.user))
-        navigate("/")
-        toast.success(res.data.message)
+ if (res.data.success) {
+      const token = res.data.token;
+      if (token) {
+        localStorage.setItem('token', token);  // Set token in localStorage
+        console.log('Token saved:', localStorage.getItem('token'));  // Verify token is saved
+        dispatch(setUser(res.data.user));
+        navigate('/');
+        toast.success(res.data.message);
+      } else {
+        console.error('Token is missing in the response.');
+        toast.error('Login failed. Token not found.');
       }
     } catch (error) {
       console.log(error)
