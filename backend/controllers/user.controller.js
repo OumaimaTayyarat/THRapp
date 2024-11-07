@@ -98,19 +98,20 @@ export const login = async (req, res) => {
             profile: user.profile
         };
 
-        return res.status(200)
-            .cookie("token", token, {
-                httpOnly: true,
-                secure: true, // Assurez-vous que votre backend est en HTTPS
-                sameSite: "None", // Permet le partage entre Vercel et Render
-                maxAge: 1 * 24 * 60 * 60 * 1000, // 1 jour
-                path: '/',
-            })
-            .json({
-                message: `Welcome back ${user.fullname}`,
-                user,
-                success: true
-            });
+      return res.status(200)
+      .cookie("token", token, {
+        httpOnly: true,           // Secure cookie that cannot be accessed via JavaScript
+        secure: true,             // Ensure your backend is in HTTPS when using this
+        sameSite: "None",         // To allow cookies to be sent across different domains (e.g., Vercel to Render)
+        maxAge: 1 * 24 * 60 * 60 * 1000, // Token expiration in 1 day
+        path: '/',                // Path where the cookie is available
+      })
+      .json({
+        message: `Welcome back ${user.fullname}`,
+        user,
+        success: true,
+        token: token,  // Send the token in the response body as well
+      });
     } catch (error) {
         console.log(error);
         return res.status(500).json({
