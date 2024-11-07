@@ -194,6 +194,10 @@ const Signup = () => {
             </div>
             <Footer />
             <style jsx>{`
+                .small-checkbox {
+            width: 16px !important;
+            height: 16px !important;
+          }
     @media (max-width: 660px) {
   .form-container {
     width: 90%; /* Formulaire prend presque toute la largeur */
