@@ -17,8 +17,8 @@ export const register = async (req, res) => {
         const file = req.file;
         const fileUri = getDataUri(file);
         const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-
-        const user = await User.findOne({ email });
+  
+       const user = await User.findOne({ email });
         if (user) {
             return res.status(400).json({
                 message: 'User already exist with this email.',
@@ -26,7 +26,8 @@ export const register = async (req, res) => {
             })
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-
+       const tokenData = { userId: newUser._id };
+       const token = jwt.sign(tokenData, process.env.SECRET_KEY, { expiresIn: '1d' });
         await User.create({
             fullname,
             email,
@@ -40,7 +41,9 @@ export const register = async (req, res) => {
 
         return res.status(201).json({
             message: "Account created successfully.",
-            success: true
+            success: true,
+            token: token, // Envoi du token dans la réponse
+
         });
     } catch (error) {
         console.log(error);
