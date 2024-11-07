@@ -31,6 +31,7 @@ const UpdateJobs = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { companies } = useSelector(store => store.company);
+const token = localStorage.getItem('token'); // Si vous utilisez localStorage pour stocker le token
 
     useEffect(() => {
         const combobox = document.querySelector('button[role="combobox"] > span');
@@ -60,7 +61,9 @@ const UpdateJobs = () => {
             setLoading(true);
             const res = await axios.put(`${JOB_API_END_POINT}/update/${params.id}`, input, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                     Authorization: `Bearer ${token}`, // Ajoute le token dans les en-têtes
+
                 },
                 withCredentials: true
             });
