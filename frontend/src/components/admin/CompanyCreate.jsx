@@ -16,7 +16,7 @@ import Navbar1 from '../shared/Navbar1'
 const CompanyCreate = () => {
     const navigate = useNavigate();
     const token = localStorage.getItem('token'); // Si vous utilisez localStorage pour stocker le token
-
+    console.log(token);
     const [companyName, setCompanyName] = useState();
     const dispatch = useDispatch();
     const registerNewCompany = async () => {
