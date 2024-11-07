@@ -7,47 +7,65 @@ import cloudinary from "../utils/cloudinary.js";
 export const register = async (req, res) => {
     try {
         const { fullname, email, phoneNumber, password, role } = req.body;
-         
+
         if (!fullname || !email || !phoneNumber || !password || !role) {
             return res.status(400).json({
                 message: "Something is missing",
                 success: false
             });
-        };
-        const file = req.file;
-        const fileUri = getDataUri(file);
-        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-  
-       const user = await User.findOne({ email });
-        if (user) {
-            return res.status(400).json({
-                message: 'User already exist with this email.',
-                success: false,
-            })
         }
+
+        // Vérifier si l'utilisateur existe déjà
+        const userExists = await User.findOne({ email });
+        if (userExists) {
+            return res.status(400).json({
+                message: 'User already exists with this email.',
+                success: false,
+            });
+        }
+
+        let profilPhotoUrl = "";
+        // Vérifier la présence du fichier avant d'essayer de le traiter
+        if (req.file) {
+            try {
+                const fileUri = getDataUri(req.file);  // Utiliser la fonction getDataUri pour traiter le fichier
+                const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+                profilPhotoUrl = cloudResponse.secure_url;
+            } catch (uploadError) {
+                return res.status(500).json({
+                    message: "File upload failed: " + uploadError.message,
+                    success: false
+                });
+            }
+        }
+
+        // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
-      
-        console.log(token)
+
+        // Create the user account
         await User.create({
             fullname,
             email,
             phoneNumber,
             password: hashedPassword,
             role,
-            profile:{
-                profilPhoto:cloudResponse.secure_url,
+            profile: {
+                profilPhoto: profilPhotoUrl
             }
         });
 
         return res.status(201).json({
             message: "Account created successfully.",
             success: true,
-
         });
     } catch (error) {
-        console.log(error);
+        console.error("Error during register:", error.message);
+        return res.status(500).json({
+            message: "Internal server error",
+            success: false
+        });
     }
-}
+};
 
 
 export const login = async (req, res) => {
