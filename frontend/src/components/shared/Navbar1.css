@@ -60,8 +60,8 @@ a:hover {
 	height: 36px;
 	width: 36px;
 	z-index: 99998;
-	-webkit-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out
+	-webkit-transition: all 0.1s ease-out;
+	transition: all 0.1s ease-out
 }
 
 .cursor2.hover,
@@ -168,7 +168,7 @@ a:hover {
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	color: #fff;
-	transition: all 0.3s ease-out;
+	transition: all 0.1s ease-out;
 }
 
 .logo-wrap a .spano {
@@ -186,7 +186,7 @@ a:hover {
 	padding-left: 15px;
 	padding-top: 15px;
 	margin-top: 26px;
-	transition: all 0.3s ease-out;
+	transition: all 0.1s ease-out;
 }
 
 .menu-icon {
@@ -248,7 +248,7 @@ a:hover {
 	/* background-color: rgba(20, 21, 26,0.6); */
 	border-bottom-right-radius: 200%;
 	z-index: -1;
-	transition: border-radius linear 0.6s, width cubic-bezier(0.77, 0, 0.175, 1) 0.3s, height cubic-bezier(0.77, 0, 0.175, 1) 0.3s;
+	transition: border-radius linear 0.6s, width cubic-bezier(0.77, 0, 0.175, 1) 0.1s, height cubic-bezier(0.77, 0, 0.175, 1) 0.1s;
 }
 
 .nav:after {
@@ -297,7 +297,7 @@ a:hover {
 	letter-spacing: 2px;
 	-webkit-transform: translate(30px, 0%);
 	transform: translate(30px, 0%);
-	-webkit-transition: opacity .2s ease, -webkit-transform .3s ease;
+	-webkit-transition: opacity .2s ease, -webkit-transform .1s ease;
 	transition: opacity .2s ease, -webkit-transform .2s ease;
 	transition: opacity .2s ease, transform .2s ease;
 	transition: opacity .2s ease, transform .2s ease, -webkit-transform .2s ease;
@@ -409,65 +409,65 @@ body.nav-active .nav__list-item {
 	opacity: 1;
 	-webkit-transform: translateX(0%);
 	transform: translateX(0%);
-	-webkit-transition: opacity .3s ease, color .3s ease, -webkit-transform .3s ease;
-	transition: opacity .3s ease, color .3s ease, -webkit-transform .3s ease;
-	transition: opacity .3s ease, transform .3s ease, color .3s ease;
-	transition: opacity .3s ease, transform .3s ease, color .3s ease, -webkit-transform .3s ease;
+	-webkit-transition: opacity .1s ease, color .1s ease, -webkit-transform .1s ease;
+	transition: opacity .1s ease, color .1s ease, -webkit-transform .1s ease;
+	transition: opacity .1s ease, transform .1s ease, color .1s ease;
+	transition: opacity .1s ease, transform .1s ease, color .1s ease, -webkit-transform .1s ease;
 }
 
 body.nav-active .nav__list-item:nth-child(0) {
+	-webkit-transition-delay: 0.3s;
+	transition-delay: 0.3s;
+}
+
+body.nav-active .nav__list-item:nth-child(1) {
+	-webkit-transition-delay: 0.4s;
+	transition-delay: 0.4s;
+}
+
+body.nav-active .nav__list-item:nth-child(2) {
+	-webkit-transition-delay: 0.5s;
+	transition-delay: 0.5s;
+}
+
+body.nav-active .nav__list-item:nth-child(3) {
+	-webkit-transition-delay: 0.6s;
+	transition-delay: 0.6s;
+}
+
+body.nav-active .nav__list-item:nth-child(4) {
 	-webkit-transition-delay: 0.7s;
 	transition-delay: 0.7s;
 }
 
-body.nav-active .nav__list-item:nth-child(1) {
+body.nav-active .nav__list-item:nth-child(5) {
 	-webkit-transition-delay: 0.8s;
 	transition-delay: 0.8s;
 }
 
-body.nav-active .nav__list-item:nth-child(2) {
-	-webkit-transition-delay: 0.9s;
-	transition-delay: 0.9s;
+body.nav-active .nav__list-item:nth-child(6) {
+	-webkit-transition-delay: 0.6s;
+	transition-delay: 0.6s;
 }
 
-body.nav-active .nav__list-item:nth-child(3) {
+body.nav-active .nav__list-item:nth-child(7) {
 	-webkit-transition-delay: 1s;
 	transition-delay: 1s;
 }
 
-body.nav-active .nav__list-item:nth-child(4) {
-	-webkit-transition-delay: 1.1s;
-	transition-delay: 1.1s;
-}
-
-body.nav-active .nav__list-item:nth-child(5) {
+body.nav-active .nav__list-item:nth-child(8) {
 	-webkit-transition-delay: 1.2s;
 	transition-delay: 1.2s;
 }
 
-body.nav-active .nav__list-item:nth-child(6) {
-	-webkit-transition-delay: 1.3s;
-	transition-delay: 1.3s;
-}
-
-body.nav-active .nav__list-item:nth-child(7) {
+body.nav-active .nav__list-item:nth-child(9) {
 	-webkit-transition-delay: 1.4s;
 	transition-delay: 1.4s;
 }
 
-body.nav-active .nav__list-item:nth-child(8) {
-	-webkit-transition-delay: 1.5s;
-	transition-delay: 1.5s;
-}
-
-body.nav-active .nav__list-item:nth-child(9) {
+body.nav-active .nav__list-item:nth-child(10) {
 	-webkit-transition-delay: 1.6s;
 	transition-delay: 1.6s;
-}
-
-body.nav-active .nav__list-item:nth-child(10) {
-	-webkit-transition-delay: 1.7s;
-	transition-delay: 1.7s;
 }
 
 .switch-wrap {
