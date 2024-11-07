@@ -15,6 +15,7 @@ const JobDescription = () => {
     const { user } = useSelector(store => store.auth);
     const isIntiallyApplied = singleJob?.applications?.some(application => application.applicant === user?._id) || false;
     const [isApplied, setIsApplied] = useState(isIntiallyApplied);
+    const token = localStorage.getItem('token'); // Récupère le token stocké dans localStorage
 
     const params = useParams();
     const jobId = params.id;
@@ -22,8 +23,15 @@ const JobDescription = () => {
 
     const applyJobHandler = async () => {
         try {
-            const res = await axios.get(`${APPLICATION_API_END_POINT}/apply/${jobId}`, { withCredentials: true });
-            if (res.data.success) {
+const res = await axios.get(
+    `${APPLICATION_API_END_POINT}/apply/${jobId}`, 
+    {
+        headers: {
+            Authorization: `Bearer ${token}`, // Ajoute le token ici
+        },
+        withCredentials: true // Inclut les cookies si nécessaire pour l'authentification
+    }
+);            if (res.data.success) {
                 setIsApplied(true);
                 const updatedSingleJob = { ...singleJob, applications: [...singleJob.applications, { applicant: user?._id }] }
                 dispatch(setSingleJob(updatedSingleJob));
