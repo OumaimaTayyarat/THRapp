@@ -16,6 +16,7 @@ const Job = ({ job }) => {
     const [isSaved, setIsSaved] = useState(singleJob?.savedBy?.includes(user?._id) || false);
     
     const jobId = job?._id;
+    const token = localStorage.getItem('token'); // Récupère le token stocké dans localStorage
 
     const dispatch = useDispatch();
 
@@ -36,8 +37,17 @@ const Job = ({ job }) => {
 
     const toggleSaveJobHandler = async () => {
         try {
-            const res = await axios.post(`${JOB_API_END_POINT}/save/${jobId}`, {}, { withCredentials: true });
-            if (res.data.success) {
+
+const res = await axios.post(
+    `${JOB_API_END_POINT}/save/${jobId}`, 
+    {}, 
+    {
+        headers: {
+            Authorization: `Bearer ${token}`, // Ajoute le token ici
+        },
+        withCredentials: true // Inclut les cookies si nécessaire pour l'authentification
+    }
+);            if (res.data.success) {
                 const updatedIsSaved = !isSaved;
                 setIsSaved(updatedIsSaved);
                 const updatedSingleJob = {
