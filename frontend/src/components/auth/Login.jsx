@@ -1,55 +1,49 @@
-import React, { useState } from 'react'
-import Navbar from '../shared/Navbar'
-import { Label } from '../ui/label'
-import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
-import { Input } from '../ui/input'
-import { Button } from '../ui/button'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { USER_API_END_POINT } from '@/utils/constant'
-import { toast } from 'sonner'
-import { useDispatch, useSelector } from 'react-redux'
-import { setLoading, setUser } from '@/redux/authSlice'
-import { Loader2 } from 'lucide-react'
-import Navbar1 from '../shared/Navbar1'
-import Footer from '../shared/Footer'
+import React, { useState } from 'react';
+import Navbar1 from '../shared/Navbar1';
+import Footer from '../shared/Footer';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { USER_API_END_POINT } from '@/utils/constant';
+import { toast } from 'sonner';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoading, setUser } from '@/redux/authSlice';
+import { Loader2 } from 'lucide-react';
 
 const Login = () => {
-  const { loading } = useSelector(store => store.auth)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-
+  const { loading } = useSelector(store => store.auth);  // loading from Redux state
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [input, setInput] = useState({
     email: "",
     password: "",
     role: ""
-  })
+  });
 
   const changeEventHandler = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value })
-  }
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
-      dispatch(setLoading(true));
+      dispatch(setLoading(true));  // Set loading to true only when form is submitted
 
       const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       });
 
-      // Check if the response indicates success
       if (res.data.success) {
         const token = res.data.token;
         if (token) {
-          // Save token in localStorage
           localStorage.setItem('token', token);
-          console.log('Token saved:', localStorage.getItem('token'));  // Verify token is saved
-          dispatch(setUser(res.data.user));  // Update the user in Redux store
-          navigate('/');  // Navigate to home page or wherever you want
-          toast.success(res.data.message);  // Show success message
+          dispatch(setUser(res.data.user));
+          navigate('/');
+          toast.success(res.data.message);
         } else {
           console.error('Token is missing in the response.');
           toast.error('Login failed. Token not found.');
@@ -62,17 +56,14 @@ const Login = () => {
       console.error('Error during login:', error);
       toast.error(error.response?.data?.message || 'An error occurred during login');
     } finally {
-      dispatch(setLoading(false));  // Stop loading spinner
+      dispatch(setLoading(false));  // Ensure loading is set to false after request is complete
     }
   };
 
   return (
     <div>
       <Navbar1 />
-      <br />
-      <br />
-      <br />
-      <br />
+      <br /><br /><br /><br />
 
       <div className='flex items-center justify-center max-w-7xl mx-auto px-2'>
         <form onSubmit={submitHandler} className='w-full sm:w-3/4 md:w-1/2 lg:w-1/3 border border-gray-200 rounded-md p-4 my-10'>
@@ -86,7 +77,7 @@ const Login = () => {
               name="email"
               onChange={changeEventHandler}
               placeholder="expl@gmail.com"
-              className="w-full" // Occupies full width
+              className="w-full"
             />
           </div>
 
@@ -98,12 +89,12 @@ const Login = () => {
               name="password"
               onChange={changeEventHandler}
               placeholder="********"
-              className="w-full" // Occupies full width
+              className="w-full"
             />
           </div>
 
           <div className='flex items-center justify-between'>
-            <RadioGroup className="flex items-center gap-4 my-5">
+            <div className="flex items-center gap-4 my-5">
               <div className="flex items-center space-x-2">
                 <Input
                   type="radio"
@@ -126,7 +117,7 @@ const Login = () => {
                 />
                 <Label htmlFor="r2" style={{ color: '#7f99b5' }}>Recruiter</Label>
               </div>
-            </RadioGroup>
+            </div>
           </div>
 
           {loading ? (
@@ -165,6 +156,6 @@ const Login = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default Login;
