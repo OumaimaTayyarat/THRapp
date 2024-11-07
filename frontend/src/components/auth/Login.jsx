@@ -31,40 +31,44 @@ const Login = () => {
     setInput({ ...input, [e.target.name]: e.target.value })
   }
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
+const submitHandler = async (e) => {
+  e.preventDefault();
 
+  try {
+    dispatch(setLoading(true));
 
-    try {
-      dispatch(setLoading(true))
-      const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
-        headers: {
-          "Content-Type": "application/json"
+    const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
 
-        },
-        withCredentials: true,
-
-      })
- if (res.data.success) {
+    // Check if the response indicates success
+    if (res.data.success) {
       const token = res.data.token;
       if (token) {
-        localStorage.setItem('token', token); // Set token in localStorage
+        // Save token in localStorage
+        localStorage.setItem('token', token);
         console.log('Token saved:', localStorage.getItem('token'));  // Verify token is saved
-        dispatch(setUser(res.data.user));
-        navigate('/');
-        toast.success(res.data.message);
+        dispatch(setUser(res.data.user));  // Update the user in Redux store
+        navigate('/');  // Navigate to home page or wherever you want
+        toast.success(res.data.message);  // Show success message
       } else {
         console.error('Token is missing in the response.');
         toast.error('Login failed. Token not found.');
       }
-    } catch (error) {
-      console.log(error)
-      toast.error(error.response.data.message)
-
-    } finally {
-      dispatch(setLoading(false))
-
+    } else {
+      console.error('Login failed:', res.data.message);
+      toast.error(res.data.message || 'Login failed');
     }
+  } catch (error) {
+    console.error('Error during login:', error);
+    // You can add more specific error handling depending on the error structure
+    toast.error(error.response?.data?.message || 'An error occurred during login');
+  } finally {
+    dispatch(setLoading(false));  // Stop loading spinner
+  }
+};
+
 
   }
   return (
