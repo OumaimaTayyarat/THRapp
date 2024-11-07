@@ -12,12 +12,20 @@ const shortlistingStatus = ["Accepted", "Rejected"];
 
 const ApplicantsTable = () => {
     const { applicants } = useSelector(store => store.application);
+    const token = localStorage.getItem('token'); // Si vous utilisez localStorage pour stocker le token
 
     const statusHandler = async (status, id) => {
         try {
-            axios.defaults.withCredentials = true;
-            const res = await axios.post(`${APPLICATION_API_END_POINT}/status/${id}/update`, { status });
-            if (res.data.success) {
+const res = await axios.post(
+    `${APPLICATION_API_END_POINT}/status/${id}/update`,
+    { status }, // Données envoyées dans le corps de la requête
+    {
+        headers: {
+            Authorization: `Bearer ${token}`, // Ajoute le token dans les en-têtes
+        },
+        withCredentials: true, // Inclut les cookies si nécessaire pour l'authentification
+    }
+);            if (res.data.success) {
                 toast.success(res.data.message);
             }
         } catch (error) {
