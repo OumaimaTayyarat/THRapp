@@ -6,13 +6,19 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const useGetAllJobs = () => {
+    const token = localStorage.getItem('token');  // Retrieve token from localStorage
+
     const dispatch = useDispatch();
     const {searchedQuery} = useSelector(store=>store.job);
     useEffect(()=>{
         const fetchAllJobs = async () => {
             try {
-                const res = await axios.get(`${JOB_API_END_POINT}/get?keyword=${searchedQuery}`,{withCredentials:true});
-                if(res.data.success){
+const res = await axios.get(`${JOB_API_END_POINT}/get?keyword=${searchedQuery}`, {
+  headers: {
+    Authorization: `Bearer ${token}`,  // Include token in Authorization header
+  },
+  withCredentials: true,
+});                if(res.data.success){
                     dispatch(setAllJobs(res.data.jobs));
                 }
             } catch (error) {
