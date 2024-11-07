@@ -27,6 +27,7 @@ const PostJob = () => {
             combobox.style.fontWeight = '300';
         }
     }, []);
+    const token = localStorage.getItem('token'); // Si vous utilisez localStorage pour stocker le token
 
     const [input, setInput] = useState({
         title: "",
@@ -58,7 +59,9 @@ const PostJob = () => {
             setLoading(true);
             const res = await axios.post(`${JOB_API_END_POINT}/post`, input, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                     Authorization: `Bearer ${token}`, // Ajoute le token dans les en-têtes
+
                 },
                 withCredentials: true
             });
