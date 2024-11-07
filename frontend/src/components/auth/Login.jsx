@@ -48,7 +48,7 @@ const Login = () => {
  if (res.data.success) {
       const token = res.data.token;
       if (token) {
-        localStorage.setItem('token', token);  // Set token in localStorage
+        localStorage.setItem('token', token); // Set token in localStorage
         console.log('Token saved:', localStorage.getItem('token'));  // Verify token is saved
         dispatch(setUser(res.data.user));
         navigate('/');
