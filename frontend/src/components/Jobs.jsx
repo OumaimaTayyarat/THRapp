@@ -20,7 +20,7 @@ const Jobs = () => {
             const filteredJobs = allJobs.filter((job) => {
                 // Check if the job matches any of the selected filters
                 return searchedQuery.some(query => 
-                    safeIncludes(job.title, query) ||
+                    safeIncludes(job.jobType, query) ||
                     safeIncludes(job.description, query) ||
                     safeIncludes(job.location, query) ||
                     safeIncludes(job.department, query)
