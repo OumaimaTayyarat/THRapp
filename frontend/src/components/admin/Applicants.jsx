@@ -13,12 +13,20 @@ const Applicants = () => {
     const params = useParams();
     const dispatch = useDispatch();
     const {applicants} = useSelector(store=>store.application);
+    const token = localStorage.getItem('token'); // Récupère le token stocké dans localStorage
 
     useEffect(() => {
         const fetchAllApplicants = async () => {
             try {
-                const res = await axios.get(`${APPLICATION_API_END_POINT}/${params.id}/applicants`, { withCredentials: true });
-                dispatch(setAllApplicants(res.data.job));
+const res = await axios.get(
+    `${APPLICATION_API_END_POINT}/${params.id}/applicants`,
+    {
+        headers: {
+            Authorization: `Bearer ${token}`, // Ajoute le token ici
+        },
+        withCredentials: true // Inclut les cookies si nécessaires pour l'authentification
+    }
+);                dispatch(setAllApplicants(res.data.job));
             } catch (error) {
                 console.log(error);
             }
