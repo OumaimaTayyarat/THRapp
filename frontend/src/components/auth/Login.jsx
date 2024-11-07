@@ -47,7 +47,7 @@ const Login = () => {
       })
       if (res.data.success) {
         localStorage.setItem('token', res.data.token); // Stocker le token dans localStorage
-
+        console.log(localStorage)
         dispatch(setUser(res.data.user))
         navigate("/")
         toast.success(res.data.message)
