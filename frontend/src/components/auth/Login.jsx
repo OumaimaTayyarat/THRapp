@@ -1,76 +1,69 @@
 import React, { useState } from 'react'
-import Navbar from '../shared/Navbar'
+import Navbar1 from '../shared/Navbar1'
 import { Label } from '../ui/label'
-import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { USER_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading, setUser } from '@/redux/authSlice'
 import { Loader2 } from 'lucide-react'
-import Navbar1 from '../shared/Navbar1'
 import Footer from '../shared/Footer'
 
 const Login = () => {
   const { loading } = useSelector(store => store.auth)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
   const [input, setInput] = useState({
-
     email: "",
-
     password: "",
-
     role: ""
-
   })
+
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value })
   }
 
-const submitHandler = async (e) => {
-  e.preventDefault();
+  const submitHandler = async (e) => {
+    e.preventDefault();
 
-  try {
-    dispatch(setLoading(true));
+    try {
+      dispatch(setLoading(true));
 
-    const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    });
+      const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
 
-    // Check if the response indicates success
-    if (res.data.success) {
-      const token = res.data.token;
-      if (token) {
-        // Save token in localStorage
-        localStorage.setItem('token', token);
-        console.log('Token saved:', localStorage.getItem('token'));  // Verify token is saved
-        dispatch(setUser(res.data.user));  // Update the user in Redux store
-        navigate('/');  // Navigate to home page or wherever you want
-        toast.success(res.data.message);  // Show success message
+      // Check if the response indicates success
+      if (res.data.success) {
+        const token = res.data.token;
+        if (token) {
+          // Save token in localStorage
+          localStorage.setItem('token', token);
+          console.log('Token saved:', localStorage.getItem('token'));  // Verify token is saved
+          dispatch(setUser(res.data.user));  // Update the user in Redux store
+          navigate('/');  // Navigate to home page or wherever you want
+          toast.success(res.data.message);  // Show success message
+        } else {
+          console.error('Token is missing in the response.');
+          toast.error('Login failed. Token not found.');
+        }
       } else {
-        console.error('Token is missing in the response.');
-        toast.error('Login failed. Token not found.');
+        console.error('Login failed:', res.data.message);
+        toast.error(res.data.message || 'Login failed');
       }
-    } else {
-      console.error('Login failed:', res.data.message);
-      toast.error(res.data.message || 'Login failed');
+    } catch (error) {
+      console.error('Error during login:', error);
+      toast.error(error.response?.data?.message || 'An error occurred during login');
+    } finally {
+      dispatch(setLoading(false));  // Stop loading spinner
     }
-  } catch (error) {
-    console.error('Error during login:', error);
-    // You can add more specific error handling depending on the error structure
-    toast.error(error.response?.data?.message || 'An error occurred during login');
-  } finally {
-    dispatch(setLoading(false));  // Stop loading spinner
-  }
-};
+  };
 
-
-  }
   return (
     <div>
       <Navbar1 />
@@ -149,38 +142,27 @@ const submitHandler = async (e) => {
       </div>
 
       <style jsx>{`
-          .small-checkbox {
-            width: 16px !important;
-            height: 16px !important;
+        .small-checkbox {
+          width: 16px !important;
+          height: 16px !important;
+        }
+
+        @media (max-width: 660px) {
+          form {
+            margin-top: 7rem !important;
+            margin-bottom: 7rem !important;
           }
-    @media (max-width: 660px) {
-  .form-container {
-    width: 90%; /* Formulaire prend presque toute la largeur */
-    padding: 1rem; /* Réduit le padding */
-  }
 
-  .input-field {
-    width: 100%; /* Champs prennent toute la largeur */
-  }
-
-  .button {
-    font-size: 0.875rem; /* Réduit la taille de la police du bouton */
-  }
-    form{
-    margin-top: 7rem !important;
-    margin-bottom: 7rem !important;
-}
-    .small-checkbox {
+          .small-checkbox {
             width: 10px !important;
             height: 10px !important;
           }
+        }
+      `}</style>
 
-         
-  }
-`}</style>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
