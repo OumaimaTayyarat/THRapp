@@ -29,6 +29,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
     }
+    const token = localStorage.getItem('token'); // ou document.cookie pour récupérer un cookie
 
     const fileChangeHandler = (e) => {
         const file = e.target.files?.[0];
@@ -57,14 +58,13 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         }
         try {
             setLoading(true);
-            const res = await axios.post(`${USER_API_END_POINT}/profile/update`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    
-
-                },
-                withCredentials: true
-            });
+       const res = await axios.post(`${USER_API_END_POINT}/profile/update`, formData, {
+    headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`, // Ajout du token dans l'en-tête Authorization
+    },
+    withCredentials: true // Inclut les cookies dans la requête si nécessaire
+});
             if (res.data.success) {
                 dispatch(setUser(res.data.user));
                 toast.success(res.data.message);
