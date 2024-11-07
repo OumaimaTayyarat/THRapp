@@ -23,8 +23,12 @@ const Job = ({ job }) => {
     useEffect(() => {
         const fetchSingleJob = async () => {
             try {
-                const res = await axios.get(`${JOB_API_END_POINT}/get/${jobId}`, { withCredentials: true });
-                if (res.data.success) {
+const res = await axios.get(`${JOB_API_END_POINT}/get/${jobId}`, {
+  headers: {
+    Authorization: `Bearer ${token}`,  // Send the token in the Authorization header
+  },
+  withCredentials: true,  // Retain cookies if needed
+});                if (res.data.success) {
                     dispatch(setSingleJob(res.data.job));
                     setIsSaved(res.data.job.savedBy.includes(user?._id));
                 }
