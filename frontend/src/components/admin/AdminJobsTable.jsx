@@ -12,15 +12,22 @@ const AdminJobsTable = () => {
     const { allAdminJobs, searchJobByText } = useSelector(store => store.job);
     const [filterJobs, setFilterJobs] = useState(allAdminJobs);
     const navigate = useNavigate();
+    const token = localStorage.getItem('token'); // Récupère le token stocké dans localStorage
+
 
     const handleDelete = async (jobId) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this job?");
         if (confirmDelete) {
             try {
-                const res = await axios.delete(`${JOB_API_END_POINT}/delete/${jobId}`, {
-                    withCredentials: true
-                });
-    
+         const res = await axios.delete(
+    `${JOB_API_END_POINT}/delete/${jobId}`,
+    {
+        headers: {
+            Authorization: `Bearer ${token}`, // Ajoute le token ici
+        },
+        withCredentials: true // Inclut les cookies si nécessaires pour l'authentification
+    }
+);
                 if (res.data.success) {
                     toast.success(res.data.message);
                     // Update the job list after deletion
