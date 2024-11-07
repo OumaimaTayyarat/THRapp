@@ -36,6 +36,7 @@ const CompanySetup = () => {
         const file = e.target.files?.[0];
         setInput({ ...input, file });
     }
+    const token = localStorage.getItem('token'); // Si vous utilisez localStorage pour stocker le token
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -52,7 +53,9 @@ const CompanySetup = () => {
             setLoading(true);
             const res = await axios.put(`${COMPANY_API_END_POINT}/update/${params.id}`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                     Authorization: `Bearer ${token}`, // Ajoute le token dans les en-têtes
+
                 },
                 withCredentials: true
             });
