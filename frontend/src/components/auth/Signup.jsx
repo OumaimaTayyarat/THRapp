@@ -60,7 +60,6 @@ const Signup = () => {
                 withCredentials: true,
             });
             if (res.data.success) {
-                localStorage.setItem('token', res.data.token); // Stocker le token dans localStorage
 
                 navigate("/login");
                 toast.success(res.data.message);
