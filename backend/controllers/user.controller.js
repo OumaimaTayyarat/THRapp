@@ -149,11 +149,11 @@ export const logout = async (req, res) => {
 }
 export const updateProfile = async (req, res) => {
     try {
-        const { fullname, email, phoneNumber, bio, skills } = req.body;
+        const { fullname, email, phoneNumber, bio, Establishment } = req.body;
         
         let skillsArray;
-        if (skills) {
-            skillsArray = skills.split(",");
+        if (Establishment) {
+            skillsArray = Establishment.split(",");
         }
 
         const userId = req.id; // Middleware authentication
@@ -171,7 +171,7 @@ export const updateProfile = async (req, res) => {
         if (email) user.email = email;
         if (phoneNumber) user.phoneNumber = phoneNumber;
         if (bio) user.profile.bio = bio;
-        if (skills) user.profile.skills = skillsArray;
+        if (Establishment) user.profile.Establishment = skillsArray;
 
         // Check if there's a file upload for profile photo
         if (req.files && req.files.profilPhoto) {
