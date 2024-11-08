@@ -75,14 +75,14 @@ const Profile = () => {
                     </div>
                 </div>
 
-                {/* Skills */}
+                {/* Establishment */}
                 <div className="my-5">
                     <h1 className="text-sm md:text-base mb-2" style={{ color: '#7f99b5' }}>
-                        Skills
+                        Establishment
                     </h1>
                     <div className="flex flex-wrap items-center gap-2">
-                        {user?.profile?.skills.length !== 0 ? (
-                            user?.profile?.skills.map((item, index) => (
+                        {user?.profile?.Establishment.length !== 0 ? (
+                            user?.profile?.Establishment.map((item, index) => (
                                 <Badge key={index} className="text-xs md:text-sm">
                                     {item}
                                 </Badge>
