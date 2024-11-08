@@ -238,7 +238,9 @@ function ContactUs() {
                                         className="w-full h-[50px] text-white font-[600] text-[20px] rounded-[10px] bg-[#edb526] flex items-center justify-center"
                                         disabled
                                     >
-                                        <span  /> {/* Your loader component here */}
+                                        <span        
+                                            className="w-full h-[50px] text-white font-[700] text-[30px] rounded-[10px] border-none bg-[#edb526]"
+ /> {/* Your loader component here */}
                                         Please wait
                                     </button>
                                 ) : (
