@@ -19,7 +19,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         email: user?.email || "",
         phoneNumber: user?.phoneNumber || "",
         bio: user?.profile?.bio || "",
-        skills: user?.profile?.skills?.map(skill => skill) || "",
+        Establishment: user?.profile?.Establishment?.map(skill => skill) || "",
         file: user?.profile?.resume || "",
         profilPhoto: user?.profile?.profilPhoto || "" // Profile photo file
 
@@ -46,7 +46,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         formData.append("email", input.email);
         formData.append("phoneNumber", input.phoneNumber);
         formData.append("bio", input.bio);
-        formData.append("skills", input.skills);
+        formData.append("Establishment", input.Establishment);
         if (input.resume) {
             formData.append("resume", input.resume);
             console.log(input.resume)
@@ -104,7 +104,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                             { id: 'email', label: 'Email', type: 'email', value: input.email },
                             { id: 'number', label: 'Number', type: 'text', value: input.phoneNumber },
                             { id: 'bio', label: 'Bio', type: 'text', value: input.bio },
-                            { id: 'skills', label: 'Skills', type: 'text', value: input.skills },
+                            { id: 'Establishment', label: 'Establishment', type: 'text', value: input.Establishment },
                             { 
                                 id: 'resume', 
                                 label: 'Resume', 
