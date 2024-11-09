@@ -2,6 +2,7 @@ import React from 'react';
 import './Teams.css'; 
 import "./Team.css"
 import logoImage from '../../assets/Capture_d_écran_2024-10-15_144945-removebg-preview.png'; // Import the image// Make sure you have your CSS file imported
+import Image1 from '../../assets/WhatsApp Image 2024-11-09 at 12.09.37.jpeg'; // Import the image// Make sure you have your CSS file imported
 
 const Teams = () => {
   return (
@@ -58,7 +59,7 @@ const Teams = () => {
        
   
         <div className="profile1">
-          <img src="https://media.licdn.com/dms/image/v2/C4D03AQFoqgDLMhOSCw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1646966331837?e=2147483647&v=beta&t=WPgCuTHKJy6iEKRYtgApU3TdmRFOmCqorgz3-oiu14A" alt=""/><span className='name'>Jamil Wahbi <h2 className='details'>CEO/Founder</h2></span>
+          <img src={Image1} alt=""/><span className='name'>Jamil Wahbi <h2 className='details'>CEO/Founder</h2></span>
         </div>
         <div className="profile1">
           <img src="https://media.licdn.com/dms/image/v2/D4E03AQF5PGCPkLs1Rg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724983531102?e=1735776000&v=beta&t=SRX1qMea-EPmitVfAs2Tx_eP4a7oJKTRaJ6tvC9my3k" alt=""/><span className='name'>Oumaima Tayyarat <h2 className='details'>web developer</h2></span>
