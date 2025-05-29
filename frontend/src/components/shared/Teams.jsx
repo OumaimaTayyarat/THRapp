@@ -62,7 +62,7 @@ const Teams = () => {
           <img src={Image1} alt=""/><span className='name'>Jamil Wahbi <h2 className='details'>CEO/Founder</h2></span>
         </div>
         <div className="profile1">
-          <img src="https://media.licdn.com/dms/image/v2/D4E03AQF5PGCPkLs1Rg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724983531102?e=1744243200&v=beta&t=Y5X9lmmdz9oQKSnx7cNqZb3F8ucwclB3lngMVxkJ7jk" alt=""/><span className='name'>Oumaima Tayyarat <h2 className='details'>web developer</h2></span>
+          <img src="https://media.licdn.com/dms/image/v2/D4E03AQF5PGCPkLs1Rg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724983531102?e=1753920000&v=beta&t=8NyuO12DqbLm1wLvad1sXTzmUCQfk0sAdkoUqwl-dqk" alt=""/><span className='name'>Oumaima Tayyarat <h2 className='details'>web developer</h2></span>
         </div>
    
       </div>
